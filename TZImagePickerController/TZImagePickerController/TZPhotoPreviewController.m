@@ -312,9 +312,13 @@
         _originalPhotoButton.frame = CGRectMake(0, 0, fullImageWidth + 56, 44);
         _originalPhotoLabel.frame = CGRectMake(fullImageWidth + 42, 0, 80, 44);
     }
+    
+    _editButton.frame = CGRectMake(16, 90, 42, 44);
+    [_editButton sizeToFit];
+    
     [_doneButton sizeToFit];
-    _doneButton.frame = CGRectMake(self.view.tz_width - _doneButton.tz_width - 12, 0, MAX(44, _doneButton.tz_width), 44);
-    _numberImageView.frame = CGRectMake(_doneButton.tz_left - 24 - 5, 10, 24, 24);
+    _doneButton.frame = CGRectMake(self.view.tz_width - _doneButton.tz_width - 12 -34, 92, _doneButton.tz_width + 30, 32);
+    _numberImageView.frame = CGRectMake(_doneButton.tz_left - 24 - 5 , 10, 24, 24);
     _numberLabel.frame = _numberImageView.frame;
     
     [self configCropView];

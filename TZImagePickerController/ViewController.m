@@ -225,7 +225,8 @@
             vc.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:vc animated:YES completion:nil];
         } else { // preview photos / 预览照片
-            TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithSelectedAssets:_selectedAssets selectedPhotos:_selectedPhotos index:indexPath.item];
+            TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithSelectedAssets:_selectedAssets selectedPhotos:_selectedPhotos index:indexPath.item preClass:NSClassFromString(@"ZGPhotoPreviewController")];
+            
             imagePickerVc.maxImagesCount = self.maxCountTF.text.integerValue;
             imagePickerVc.allowPickingGif = self.allowPickingGifSwitch.isOn;
             imagePickerVc.autoSelectCurrentWhenDone = NO;

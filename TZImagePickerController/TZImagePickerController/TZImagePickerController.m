@@ -231,8 +231,9 @@
 }
 
 /// This init method just for previewing photos / 用这个初始化方法以预览图片
-- (instancetype)initWithSelectedAssets:(NSMutableArray *)selectedAssets selectedPhotos:(NSMutableArray *)selectedPhotos index:(NSInteger)index{
-    TZPhotoPreviewController *previewVc = [[TZPhotoPreviewController alloc] init];
+- (instancetype)initWithSelectedAssets:(NSMutableArray *)selectedAssets selectedPhotos:(NSMutableArray *)selectedPhotos index:(NSInteger)index preClass:(Class)preClass{
+    
+    TZPhotoPreviewController *previewVc = [[preClass alloc] init];
     self = [super initWithRootViewController:previewVc];
     if (self) {
         self.selectedAssets = [NSMutableArray arrayWithArray:selectedAssets];
