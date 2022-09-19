@@ -20,7 +20,7 @@
 #import "TZAuthLimitedFooterTipView.h"
 #import <PhotosUI/PhotosUI.h>
 @interface TZPhotoPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, PHPhotoLibraryChangeObserver> {
-    NSMutableArray *_models;
+   
     
     UIView *_bottomToolBar;
     UIButton *_previewButton;
@@ -438,6 +438,7 @@ static CGFloat itemMargin = 5;
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)previewButtonClick {
+    
     TZPhotoPreviewController *photoPreviewVc = [[TZPhotoPreviewController alloc] init];
     [self pushPhotoPrevireViewController:photoPreviewVc needCheckSelectedModels:YES];
 }
@@ -726,13 +727,17 @@ static CGFloat itemMargin = 5;
             [self.navigationController pushViewController:gifPreviewVc animated:YES];
         }
     } else {
-        TZPhotoPreviewController *photoPreviewVc = [[TZPhotoPreviewController alloc] init];
-        photoPreviewVc.currentIndex = index;
-        photoPreviewVc.models = _models;
-        [self pushPhotoPrevireViewController:photoPreviewVc];
+        
+        [self pushExchangePhotoPrevireVC:index];
+        
     }
 }
-
+- (void)pushExchangePhotoPrevireVC:(NSInteger)index {
+    TZPhotoPreviewController *photoPreviewVc = [[TZPhotoPreviewController alloc] init];
+    photoPreviewVc.currentIndex = index;
+    photoPreviewVc.models = _models;
+    [self pushPhotoPrevireViewController:photoPreviewVc];
+}
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
