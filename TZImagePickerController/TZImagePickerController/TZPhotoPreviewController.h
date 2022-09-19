@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class TZAssetModel;
 @interface TZPhotoPreviewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *models;                  ///< All photo models / 所有图片模型数组
