@@ -23,3 +23,13 @@
 @property (nonatomic, copy) void (^doneButtonClickBlockWithPreviewType)(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto);
 
 @end
+@interface ZGPhotoBottomCell : UICollectionViewCell
+@property (nonatomic , strong) UIImageView *thumb;
+@property (nonatomic , strong) UIImageView *videoIcon;
+
+@property (nonatomic, strong) TZAssetModel *model;
+
+@property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, assign) BOOL cancleCurrentIndex;
+
+@end

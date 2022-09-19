@@ -24,9 +24,11 @@
     UIButton *_backButton;
     UIButton *_selectButton;
     UILabel *_indexLabel;
-    
+    UILabel *_selectNumLabel;
+
     UIView *_toolBar;
     UIButton *_doneButton;
+    UIButton *_editButton;
     UIImageView *_numberImageView;
     UILabel *_numberLabel;
     UIButton *_originalPhotoButton;
@@ -107,6 +109,8 @@
     
     _backButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [_backButton setImage:[UIImage tz_imageNamedFromMyBundle:@"navi_back"] forState:UIControlStateNormal];
+    [_backButton setImage:[UIImage imageNamed:@"nav_back_white"] forState:UIControlStateNormal];
+
     [_backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_backButton addTarget:self action:@selector(backButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
@@ -125,7 +129,15 @@
     _indexLabel.textColor = [UIColor whiteColor];
     _indexLabel.textAlignment = NSTextAlignmentCenter;
     
+    _selectNumLabel = [[UILabel alloc] init];
+    _selectNumLabel.adjustsFontSizeToFitWidth = YES;
+    _selectNumLabel.font = [UIFont systemFontOfSize:17];
+    _selectNumLabel.textColor = [UIColor whiteColor];
+    _selectNumLabel.textAlignment = NSTextAlignmentCenter;
+
+    
     [_naviBar addSubview:_selectButton];
+    [_naviBar addSubview:_selectNumLabel];
     [_naviBar addSubview:_indexLabel];
     [_naviBar addSubview:_backButton];
     [self.view addSubview:_naviBar];
@@ -164,6 +176,13 @@
     [_doneButton setTitle:_tzImagePickerVc.doneBtnTitleStr forState:UIControlStateNormal];
     [_doneButton setTitleColor:_tzImagePickerVc.oKButtonTitleColorNormal forState:UIControlStateNormal];
     
+//    _selectNumLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentIndex,_totalPhotos.count];
+    _editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _editButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [_editButton addTarget:self action:@selector(editButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [_editButton setTitle:@"编辑" forState:UIControlStateNormal];
+    [_editButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    
     _numberImageView = [[UIImageView alloc] initWithImage:_tzImagePickerVc.photoNumberIconImage];
     _numberImageView.backgroundColor = [UIColor clearColor];
     _numberImageView.clipsToBounds = YES;
@@ -180,11 +199,13 @@
     _numberLabel.backgroundColor = [UIColor clearColor];
     _numberLabel.userInteractionEnabled = YES;
     
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doneButtonClick)];
     [_numberLabel addGestureRecognizer:tapGesture];
     
     [_originalPhotoButton addSubview:_originalPhotoLabel];
     [_toolBar addSubview:_doneButton];
+    [_toolBar addSubview:_editButton];
     [_toolBar addSubview:_originalPhotoButton];
     [_toolBar addSubview:_numberImageView];
     [_toolBar addSubview:_numberLabel];
