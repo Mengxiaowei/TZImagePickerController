@@ -770,7 +770,7 @@
     if (@available(iOS 13.0, *)) {
         self.view.backgroundColor = UIColor.tertiarySystemBackgroundColor;
     } else {
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor clearColor];
     }
     
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
@@ -811,6 +811,9 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 self->_albumArr = [NSMutableArray arrayWithArray:models];
                 for (TZAlbumModel *albumModel in self->_albumArr) {
+                    if ([albumModel.name isEqualToString:@"视频"]) {
+                        albumModel.name = @"所有视频";
+                    }
                     albumModel.selectedModels = imagePickerVc.selectedModels;
                 }
                 [imagePickerVc hideProgressHUD];
@@ -825,8 +828,9 @@
                     self->_tableView.rowHeight = 70;
                     if (@available(iOS 13.0, *)) {
                         self->_tableView.backgroundColor = [UIColor tertiarySystemBackgroundColor];
+                        self->_tableView.backgroundColor = [UIColor clearColor];
                     } else {
-                        self->_tableView.backgroundColor = [UIColor whiteColor];
+                        self->_tableView.backgroundColor = [UIColor clearColor];
                     }
                     self->_tableView.tableFooterView = [[UIView alloc] init];
                     self->_tableView.dataSource = self;
@@ -881,6 +885,8 @@
         tableViewHeight = self.view.tz_height - top;
     } else {
         tableViewHeight = self.view.tz_height;
+        tableViewHeight = 70 *_albumArr.count;
+
     }
     _tableView.frame = CGRectMake(0, top, self.view.tz_width, tableViewHeight);
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
@@ -899,6 +905,8 @@
     TZAlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TZAlbumCell"];
     if (@available(iOS 13.0, *)) {
         cell.backgroundColor = UIColor.tertiarySystemBackgroundColor;
+        cell.backgroundColor = [UIColor colorWithRed:22 green:22 blue:22 alpha:1];
+
     }
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
     cell.albumCellDidLayoutSubviewsBlock = imagePickerVc.albumCellDidLayoutSubviewsBlock;

@@ -409,7 +409,6 @@
 
 - (void)setModel:(TZAlbumModel *)model {
     _model = model;
-    
     UIColor *nameColor = UIColor.blackColor;
     if (@available(iOS 13.0, *)) {
         nameColor = UIColor.labelColor;
