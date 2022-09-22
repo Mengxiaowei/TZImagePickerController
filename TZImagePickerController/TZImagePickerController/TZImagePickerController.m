@@ -908,6 +908,7 @@
     if (@available(iOS 13.0, *)) {
         cell.backgroundColor = UIColor.tertiarySystemBackgroundColor;
         cell.backgroundColor = [UIColor colorWithRed:22/255.0 green:22/255.0 blue:22/255.0 alpha:1];
+        cell.backgroundColor = [UIColor colorWithRed:42/255.0 green:41/255.0 blue:40/255.0 alpha:1];
 
     }
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
