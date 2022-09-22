@@ -57,6 +57,8 @@
     } else {
         self.view.backgroundColor = [UIColor whiteColor];
     }
+//    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:42/255.0 green:41/255.0 blue:40/255.0 alpha:1];
     self.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationBar.translucent = YES;
     [TZImageManager manager].shouldFixOrientation = NO;
@@ -885,7 +887,7 @@
         tableViewHeight = self.view.tz_height - top;
     } else {
         tableViewHeight = self.view.tz_height;
-        tableViewHeight = 70 *_albumArr.count;
+//        tableViewHeight = 70 *_albumArr.count;
 
     }
     _tableView.frame = CGRectMake(0, top, self.view.tz_width, tableViewHeight);
@@ -905,7 +907,7 @@
     TZAlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TZAlbumCell"];
     if (@available(iOS 13.0, *)) {
         cell.backgroundColor = UIColor.tertiarySystemBackgroundColor;
-        cell.backgroundColor = [UIColor colorWithRed:22 green:22 blue:22 alpha:1];
+        cell.backgroundColor = [UIColor colorWithRed:22/255.0 green:22/255.0 blue:22/255.0 alpha:1];
 
     }
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
