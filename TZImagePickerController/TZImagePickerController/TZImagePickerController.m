@@ -57,7 +57,7 @@
     } else {
         self.view.backgroundColor = [UIColor whiteColor];
     }
-//    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.view.backgroundColor = [UIColor colorWithRed:42/255.0 green:41/255.0 blue:40/255.0 alpha:1];
     self.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationBar.translucent = YES;
@@ -69,7 +69,7 @@
     self.oKButtonTitleColorDisabled = [UIColor colorWithRed:(83/255.0) green:(179/255.0) blue:(17/255.0) alpha:0.5];
     
     self.navigationBar.barTintColor = [UIColor colorWithRed:(34/255.0) green:(34/255.0)  blue:(34/255.0) alpha:1.0];
-    self.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationBar.tintColor = [UIColor colorWithRed:(42/255.0) green:(41/255.0)  blue:(40/255.0) alpha:1.0];
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (self.needShowStatusBar) [UIApplication sharedApplication].statusBarHidden = NO;
 }
@@ -774,7 +774,7 @@
     } else {
         self.view.backgroundColor = [UIColor clearColor];
     }
-    
+    self.view.backgroundColor = [UIColor clearColor];
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:imagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:imagePickerVc action:@selector(cancelButtonClick)];
     [TZCommonTools configBarButtonItem:cancelItem tzImagePickerVc:imagePickerVc];
